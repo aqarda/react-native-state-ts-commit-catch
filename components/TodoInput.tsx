@@ -10,25 +10,31 @@ type TodoInputProps = {
 export function TodoInput({ onAddTodo }: TodoInputProps) {
   const [enteredTodo, setEnteredTodo] = useState<string>("");
 
-  // TODO (state): update enteredTodo with the text the user typed.
-  const inputHandler = (text) => {};
+  const inputHandler = (text: string): void => {
+    setEnteredTodo(text);
+  };
 
-  const addTodoHandler = () => {
+  const addTodoHandler = (): void => {
     // TODO (logic): call onAddTodo(enteredTodo) to send the new todo up
     // to TodoSection
     // TODO (state): clear the input field afterwards (reset enteredTodo
     // back to "")
   };
 
-  const cancelHandler = () => {
+  const cancelHandler = (): void => {
     // TODO (state): clear the input field without adding a todo
   };
 
   return (
     <View style={styles.inputSection}>
       <Text style={styles.inputSectionTitle}>Add a Todo</Text>
-      {/* TODO: implement onChangeText, value, placeholder, placeholderTextColor, and style */}
-      <TextInput />
+      <TextInput
+        onChangeText={inputHandler}
+        value={enteredTodo}
+        placeholder="What needs doing?"
+        placeholderTextColor={colors.overlay}
+        style={styles.textInput}
+      />
       <Text style={styles.inputHint}>
         Type a task above, then tap Add Todo.
       </Text>
